@@ -1,0 +1,60 @@
+Index: nss-pam-ldapd-0.9.11/nslcd.conf
+===================================================================
+--- a/nslcd.conf
++++ b/nslcd.conf
+@@ -5,8 +5,8 @@
+ # See the manual page nslcd.conf(5) for more information.
+ 
+ # The user and group nslcd should run as.
+-uid nslcd
+-gid nslcd
++uid root
++gid root
+ 
+ # The uri pointing to the LDAP server to use for name lookups.
+ # Multiple entries may be specified. The address that is used
+@@ -59,12 +59,12 @@ base dc=example,dc=com
+ #idle_timelimit 3600
+ 
+ # Use StartTLS without verifying the server certificate.
+-#ssl start_tls
+-#tls_reqcert never
++ssl start_tls
++tls_reqcert demand
+ 
+ # CA certificates for server certificate verification
+ #tls_cacertdir /etc/ssl/certs
+-#tls_cacertfile /etc/ssl/ca.cert
++tls_cacertfile /etc/ssl/cert.pem
+ 
+ # Seed the PRNG if /dev/urandom is not provided
+ #tls_randfile /var/run/egd-pool
+@@ -104,17 +104,17 @@ base dc=example,dc=com
+ #map    group  member           posixMember
+ 
+ # Mappings for Active Directory
+-#pagesize 1000
+-#referrals off
+-#idle_timelimit 800
+-#filter passwd (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*))
+-#map    passwd uid              sAMAccountName
+-#map    passwd homeDirectory    unixHomeDirectory
+-#map    passwd gecos            displayName
+-#filter shadow (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*))
+-#map    shadow uid              sAMAccountName
+-#map    shadow shadowLastChange pwdLastSet
+-#filter group  (objectClass=group)
++pagesize 1000
++referrals off
++idle_timelimit 800
++filter passwd (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*))
++map    passwd uid              sAMAccountName
++map    passwd homeDirectory    unixHomeDirectory
++map    passwd gecos            displayName
++filter shadow (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*))
++map    shadow uid              sAMAccountName
++map    shadow shadowLastChange pwdLastSet
++filter group  (objectClass=group)
+ 
+ # Alternative mappings for Active Directory
+ # (replace the SIDs in the objectSid mappings with the value for your domain)
