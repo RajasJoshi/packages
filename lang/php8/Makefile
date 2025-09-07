@@ -6,8 +6,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=php
-PKG_VERSION:=8.4.10
-PKG_RELEASE:=2
+PKG_VERSION:=8.4.12
+PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Michael Heimpold <mhei@heimpold.de>
 PKG_LICENSE:=PHP-3.01
@@ -16,7 +16,7 @@ PKG_CPE_ID:=cpe:/a:php:php
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.php.net/distributions/
-PKG_HASH:=14983a9ef8800e6bc2d920739fd386054402f7976ca9cd7f711509496f0d2632
+PKG_HASH:=c1b7978cbb5054eed6c749bde4444afc16a3f2268101fb70a7d5d9b1083b12ad
 
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
